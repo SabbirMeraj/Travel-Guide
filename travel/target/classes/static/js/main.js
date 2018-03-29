@@ -33,3 +33,44 @@ function subscribe(btn,UserID,SubscriberID){
 	
 
 }
+
+
+function functionLike(btn,UserID,PostID){
+	
+	
+	if(btn.getAttribute("value")=="false"){
+		
+		$.ajax({
+			
+			
+			
+			method:"post",
+			url:"/like?UserID="+UserID+"&PostID="+PostID,
+			success: function(){
+				btn=document.getElementById(""+PostID);
+				
+				btn.style.color="Red";
+				btn.setAttribute("value","true");
+				
+			}
+		});
+		
+	}
+	else{
+	$.ajax({
+			
+			
+			
+			method:"post",
+			url:"/unlike?UserID="+UserID+"&PostID="+PostID,
+			success: function(){
+				btn.style.color="Black";
+				btn.setAttribute("value","false");
+				
+			}
+		});
+		
+	}
+	
+
+}

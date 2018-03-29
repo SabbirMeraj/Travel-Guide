@@ -47,3 +47,21 @@ h1{
 	padding:5px;
 	
 }
+
+.buttons{
+	padding:25px;
+	
+}
+
+.newsfeed{
+	height:150px;
+}
+.text {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}

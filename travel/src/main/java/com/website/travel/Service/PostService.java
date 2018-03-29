@@ -48,4 +48,8 @@ public class PostService {
 	}
 	
 	*/
+	
+	public Post findByPostID(int PostID){
+		return pr.findById(PostID);
+	}
 }

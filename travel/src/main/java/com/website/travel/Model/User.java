@@ -45,6 +45,10 @@ public class User {
 	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	Set <Post> post;
 	
+	
+	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	Set <Like> like;
+	
 	public int getID() {
 		return ID;
 	}
@@ -106,5 +110,13 @@ public class User {
 
 	public void setPost(Set<Post> post) {
 		this.post = post;
+	}
+
+	public Set<Like> getLike() {
+		return like;
+	}
+
+	public void setLike(Set<Like> like) {
+		this.like = like;
 	}
 }

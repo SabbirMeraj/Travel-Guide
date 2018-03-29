@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.website.travel.Model.User;
+import com.website.travel.Service.LikeService;
 import com.website.travel.Service.PostService;
 import com.website.travel.Service.UserService;
 
@@ -26,6 +27,10 @@ public class HomeController {
 	
 	@Autowired
 	PostService ps;
+	
+	
+	@Autowired
+	LikeService ls;
 	
 	@GetMapping("/")
 	public String login(HttpServletRequest request){
@@ -57,6 +62,9 @@ public class HomeController {
 			
 			session.setAttribute("logged-user", u.getID());
 			request.setAttribute("posts", ps.showPost(u.getID()));
+			System.out.println(u.getID());
+			request.setAttribute("likes", ls.findByUserID(u.getID()));
+			
 			request.setAttribute("Option", "HOME");
 			return "home";
 		}
@@ -71,6 +79,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String getLoginPage(HttpServletRequest request){
 		request.setAttribute("posts", ps.showPost((Integer) request.getSession().getAttribute("logged-user")));
+		request.setAttribute("likes", ls.findByUserID((Integer) request.getSession().getAttribute("logged-user")));
 		request.setAttribute("Option", "HOME");
 		return "home";
 	}
