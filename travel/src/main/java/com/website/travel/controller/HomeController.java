@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.website.travel.Model.User;
+import com.website.travel.Service.LikeService;
 import com.website.travel.Service.PostService;
 import com.website.travel.Service.UserService;
 
@@ -26,6 +27,10 @@ public class HomeController {
 	
 	@Autowired
 	PostService ps;
+	
+	
+	@Autowired
+	LikeService ls;
 	
 	@GetMapping("/")
 	public String login(HttpServletRequest request){
@@ -56,7 +61,12 @@ public class HomeController {
 		if(u!=null){
 			
 			session.setAttribute("logged-user", u.getID());
+			request.setAttribute("user", us.findUser(u.getID()));
 			request.setAttribute("posts", ps.showPost(u.getID()));
+			
+			System.out.println(u.getID());
+			request.setAttribute("likes", ls.findByUserID(u.getID()));
+			request.setAttribute("Page", "TIMELINE");
 			request.setAttribute("Option", "HOME");
 			return "home";
 		}
@@ -70,13 +80,17 @@ public class HomeController {
 	
 	@GetMapping("/login")
 	public String getLoginPage(HttpServletRequest request){
+		request.setAttribute("user", us.findUser((Integer) request.getSession().getAttribute("logged-user")));
 		request.setAttribute("posts", ps.showPost((Integer) request.getSession().getAttribute("logged-user")));
+		request.setAttribute("likes", ls.findByUserID((Integer) request.getSession().getAttribute("logged-user")));
+		request.setAttribute("Page", "TIMELINE");
 		request.setAttribute("Option", "HOME");
 		return "home";
 	}
 	
 	@GetMapping("/info")
 	public String profile(@RequestParam int ID,HttpServletRequest request){
+		request.setAttribute("Page", "TIMELINE");
 		request.setAttribute("Option", "INFO");
 		request.setAttribute("user", us.findUser(ID));
 		return "home";
@@ -84,6 +98,7 @@ public class HomeController {
 	
 	@GetMapping("/edit-info")
 	public String editInfo(@RequestParam int ID,HttpServletRequest request){
+		request.setAttribute("Page", "TIMELINE");
 		request.setAttribute("Option", "EDIT-INFO");
 		request.setAttribute("user", us.findUser(ID));
 		return "home";
@@ -92,6 +107,7 @@ public class HomeController {
 	@PostMapping("/update")
 	public String update(@ModelAttribute User user, BindingResult bindingResult,HttpServletRequest request){
 		us.saveUser(user);
+		request.setAttribute("Page", "TIMELINE");
 		request.setAttribute("Option", "INFO");
 		return "home";
 	}
@@ -99,9 +115,16 @@ public class HomeController {
 	@GetMapping("/suggestion")
 	public String suggestion(@RequestParam int ID, HttpServletRequest request){
 		request.setAttribute("users", us.showUser(ID));
+		request.setAttribute("Page", "SUGGESTION");
 		request.setAttribute("Option","SUGGESTION");
 		return "home";
 	}
 	
-	
+	@GetMapping("/profile")
+	public String getProfilePage(HttpServletRequest request){
+		request.setAttribute("posts", ps.showOwnPost((Integer) request.getSession().getAttribute("logged-user")));
+		request.setAttribute("likes", ls.findByUserID((Integer) request.getSession().getAttribute("logged-user")));
+		request.setAttribute("Option", "HOME");
+		return "home";
+	}
 }

@@ -26,6 +26,11 @@ public class PostService {
 	public List<Post>showPost(int UserID){
 		return pr.findAll(UserID);
 	}
+	
+	
+	public List<Post>showOwnPost(int UserID){
+		return pr.findByUserID(UserID);
+	}
 	/*
 	public List<Post> showPost(int UserID){
 		List<Integer> subscriberIdList=sr.findByUserID(UserID);
@@ -48,4 +53,8 @@ public class PostService {
 	}
 	
 	*/
+	
+	public Post findByPostID(int PostID){
+		return pr.findById(PostID);
+	}
 }
