@@ -53,6 +53,7 @@ public class SubscriberController {
 	
 	@GetMapping("/subscription")
 	public String subscription(@RequestParam int ID, HttpServletRequest request){
+		request.setAttribute("Page", "SUBSCRIPTION");
 		request.setAttribute("Option", "SUBSCRIPTION");
 		request.setAttribute("subscribers", ss.findByUserID(ID));
 		return "home";
