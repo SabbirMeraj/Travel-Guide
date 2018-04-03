@@ -1,10 +1,16 @@
 package com.website.travel.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,32 +19,43 @@ public class Post {
 
 	
 	@Id
-	int ID;
+	int id;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="UserID")
 	User user;
 	String title;
 	int cost;
 	String body;
+	String place;
 	
+	
+	@OneToMany(mappedBy="post",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	List<Like> like;
+	
+	@OneToMany(mappedBy="post",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	Set <Comment> comment;
+	
+
 	public Post(){
 		
 	}
 	
-	public Post(User user, String title, int cost, String body) {
+	public Post(User user, String title, int cost, String body, String place) {
 		super();
 		this.user = user;
 		this.title = title;
 		this.cost = cost;
 		this.body = body;
+		this.place=place;
 	}
 
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public User getUser() {
@@ -72,4 +89,24 @@ public class Post {
 	public void setBody(String body) {
 		this.body = body;
 	}
+
+	public List<Like> getLike() {
+		return like;
+	}
+
+	public void setLike(List<Like> like) {
+		this.like = like;
+	}
+
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+	
+
+
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,12 +23,13 @@ public class User {
 		
 	}
 	
-	public User(String username, int age, String email, String password) {
+	public User(String username, int age, String email, String password,byte [] image) {
 		super();
 		this.username = username;
 		this.age = age;
 		this.email = email;
 		this.password = password;
+		this.image=image;
 	}
 	@Id
 	int ID;
@@ -37,6 +39,10 @@ public class User {
 	String password;
 	String bio;
 	String interest;
+	String intro1, intro2,intro3;
+	
+	@Lob
+	byte [] image;
 
 	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	Set <Subscriber> subscriber;
@@ -44,6 +50,13 @@ public class User {
 	
 	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	Set <Post> post;
+	
+	
+	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	Set <Like> like;
+	
+	@OneToMany(mappedBy="user",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	Set <Comment> comment;
 	
 	public int getID() {
 		return ID;
@@ -107,4 +120,57 @@ public class User {
 	public void setPost(Set<Post> post) {
 		this.post = post;
 	}
+
+	public Set<Like> getLike() {
+		return like;
+	}
+
+	public void setLike(Set<Like> like) {
+		this.like = like;
+	}
+
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+	public String getIntro1() {
+		return intro1;
+	}
+
+	public void setIntro1(String intro1) {
+		this.intro1 = intro1;
+	}
+
+	public String getIntro2() {
+		return intro2;
+	}
+
+	public void setIntro2(String intro2) {
+		this.intro2 = intro2;
+	}
+
+	public String getIntro3() {
+		return intro3;
+	}
+
+	public void setIntro3(String intro3) {
+		this.intro3 = intro3;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	
+	
+
+	
 }

@@ -1,16 +1,74 @@
-h1{
+body{
+	background-color:#21001f;	
+	background-color:#bfb7be;
 	
-	padding-bottom:20px;
+}
+
+.webHeader{
+		margin-top:10px;
+		text-align: center;
+		
 }
 .header{
-	text-align: center;
 	
+	margin-top:10px;
+	
+}
+.sidebar{
+background-color:#eaecef;
+}
+
+.mainArea{
+	background-color:#eaecef;
+
+}
+.well{
+	background-color:#d2d4d8;
+}
+		
+.profilepic{
+		padding:10px;
+}
+
+.text-center{
+		color:#062159;
+		font-size: 20px;
+}
+
+.postbox{
+	margin:10px;
+	border-radius: 2px;
+    box-shadow: 0 2px 5px 5px rgba(0,0,0,.1);
+	padding:10px;
+	background-color:#d2d4d8;
+	margin-top:0px;
+	
+	
+}
+.posts{
+	margin:10px;
+	border-radius: 2px;
+    box-shadow: 0 2px 5px 5px rgba(0,0,0,.1);
+	padding:10px;
+	background-color:#d2d4d8;
+	margin-top:20px;
+}
+
+.text {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   font-size: 15px;
 }
 
 .form{
 	margin-top:35px;
 	
-    background: #fff;
+    background: #d3dded;
     padding: 40px;
     padding-bottom: 30px;
     border-radius: 2px;
@@ -19,31 +77,84 @@ h1{
     border-top-style:solid;
 }
 
-.info-form{
-	margin-top:35px;
-	margin:10px;
-    background: #EEE;
-    padding: 30px;
-    padding-bottom: 30px;
-    border-radius: 2px;
-    box-shadow: 0 2px 15px 5px rgba(0,0,0,.1);
-    border:10px;
-    border-top-width:4px;
-    border-top-style:solid;
-	
+.fullpost{
+	margin-top:10px;	
 }
 
-.postbox{
-	margin:10px;
-	border-radius: 2px;
-    box-shadow: 0 2px 5px 5px rgba(0,0,0,.1);
-	padding:10px;
-	background-color:#eee;
-}
-
-
-.subscribe-button{
-	margin:5px;
+.fa{
 	padding:5px;
+}
+
+input[type="text"],input[type="email"],input[type="number"],input[type="password"],option{
+
+  background-color : #eff3f7;
+
+}
+h1{
+		color:#001d49;
+}
+.postboxHeading{
 	
+	padding:10px;
+	color:#44033b;
+}
+h3{
+	
+	text-align:center;
+	
+    border-bottom: 4px double #333;
+    padding: 10px 0;
+
+}
+
+.suggestion{
+	text-align:center;
+	
+}
+.table{
+		text-align:center;
+}
+
+.edit-btn{
+		margin-top:10px;
+		width: 50%;
+	
+}
+.comment{
+		margin:20px;
+		padding:5px;
+}
+.subscribe-btn{
+	width: 40%;
+}
+
+#sel1 option{
+		width:5px;
+}
+.label{
+	margin:10px;
+}
+
+.postBody{
+	
+	font-size:15px;
+}
+
+.search {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background-color : white;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.search:focus {
+    width: 80%;
+     background-color : white;
+}
+
+#image{
+	width:50%;
+	
+
 }
