@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.website.travel.Model.Subscriber;
 import com.website.travel.Model.User;
+import com.website.travel.Service.PostService;
 import com.website.travel.Service.SubscriberService;
 
 @Controller
@@ -17,6 +18,9 @@ public class SubscriberController {
 	
 	@Autowired
 	SubscriberService ss;
+	
+	@Autowired
+	PostService ps;
 	
 	@PostMapping("/subscribe")
 	public String subscribe(@RequestParam int UserID, @RequestParam int SubscriberID,HttpServletRequest request){
@@ -53,8 +57,18 @@ public class SubscriberController {
 	
 	@GetMapping("/subscription")
 	public String subscription(@RequestParam int ID, HttpServletRequest request){
-		request.setAttribute("Option", "SUBSCRIPTION");
-		request.setAttribute("subscribers", ss.findByUserID(ID));
-		return "home";
+		if(request.getSession().getAttribute("logged-user")!=null){
+			request.setAttribute("Page", "SUBSCRIPTION");
+			request.setAttribute("Option", "SUBSCRIPTION");
+			request.setAttribute("posts", ps.showPost(ID));
+			request.setAttribute("subscribers", ss.findByUserID(ID));
+			return "home";
+		}
+		else{
+			request.setAttribute("Option", "LOGIN");
+			return "index";
+		}
+		
+		
 	}
 }

@@ -33,3 +33,73 @@ function subscribe(btn,UserID,SubscriberID){
 	
 
 }
+
+
+function functionLike(btn,UserID,PostID){
+	
+	
+	if(btn.getAttribute("value")=="false"){
+		
+		$.ajax({
+			
+			
+			
+			method:"post",
+			url:"/like?UserID="+UserID+"&PostID="+PostID,
+			success: function(){
+				btn=document.getElementById(""+PostID);
+				
+				btn.style.color="#581af4";
+				btn.setAttribute("value","true");
+				
+			}
+		});
+		
+	}
+	else{
+	$.ajax({
+			
+			
+			
+			method:"post",
+			url:"/unlike?UserID="+UserID+"&PostID="+PostID,
+			success: function(){
+				btn.style.color="Black";
+				btn.setAttribute("value","false");
+				
+			}
+		});
+		
+	}
+	
+
+}
+
+
+function functionIntro(){
+	var x=document.getElementById("intro");
+	var y=document.getElementById("introForm");
+	
+	if(x.style.display=="block"){
+		x.style.display="none";
+		y.style.display="block";
+	}
+	
+	else{
+		y.style.display="none";
+		x.style.display="block";
+	}
+	
+
+}
+function functionSearch(){
+	var x=document.forms["searchForm"]["option"].value;
+	var y=document.forms["searchForm"]["searchText"].value;
+	
+	if(y!=''){
+		document.getElementById("searchForm").submit();
+	}
+	else{
+		alert("Enter some text");
+	}
+}

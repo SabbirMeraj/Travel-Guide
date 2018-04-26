@@ -1,0 +1,71 @@
+h1{
+	
+	padding-bottom:20px;
+}
+.header{
+	text-align: center;
+	
+}
+
+.form{
+	margin-top:35px;
+	
+    background: #fff;
+    padding: 40px;
+    padding-bottom: 30px;
+    border-radius: 2px;
+    box-shadow: 0 2px 15px 5px rgba(0,0,0,.1);
+    border-top-width:4px;
+    border-top-style:solid;
+}
+
+.info-form{
+	margin-top:35px;
+	margin:10px;
+    background: #EEE;
+    padding: 30px;
+    padding-bottom: 30px;
+    border-radius: 2px;
+    box-shadow: 0 2px 15px 5px rgba(0,0,0,.1);
+    border:10px;
+    border-top-width:4px;
+    border-top-style:solid;
+	
+}
+
+.postbox{
+	margin:10px;
+	border-radius: 2px;
+    box-shadow: 0 2px 5px 5px rgba(0,0,0,.1);
+	padding:10px;
+	background-color:#eee;
+}
+
+
+.subscribe-button{
+	margin:5px;
+	padding:5px;
+	
+}
+
+.buttons{
+	padding:25px;
+	
+}
+
+.newsfeed{
+	height:150px;
+}
+.text {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.icon{
+	text-decoration:none;
+}

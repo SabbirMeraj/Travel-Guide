@@ -5,91 +5,76 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Let's Travel</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 <c:url value="/css/main.css" var="jstlCss" />
 <link href="${jstlCss}" rel="stylesheet" />
-</head>
 
-<body style="background-image: url(index.jpg)">
-	<div class="container-fluid">
-		<div class="container-fluid">
-			<div class="webHeader">
-				
-				<div>  <p class="websiteName">Let's Travel </p></div>
-				
-			</div>
+
+
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Website</h1>
 		</div>
-		
-		<c:choose>
-			<c:when test="${Option=='LOGIN'}">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="header">
-						<a href="login-page" class="login-link">Click here to login! </a>
-						<!--
-						<div class="navbar navbar-primary">
-							<div class="container-fluid">
-								<div class="navbar-header">
-									&nbsp;
+	</div>
+
+	<nav class="navbar navbar-inverse"> </nav>
+
+
+	<c:choose>
+
+		<c:when test="${Option=='LOGIN'}">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+					
+					</div>
+					<div class="col-sm-6 form">
+						<form class="form-horizontal" action="/login" method="post">
+							<c:if test="${not empty Error}">
+								<div class="alert alert-danger">
+									<c:out value="${Error}"></c:out>
+								</div>
+					
+							</c:if>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="email">Email:</label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control" id="email"
+										placeholder="Enter email" name="email">
 								</div>
 							</div>
-						</div>
-						-->
+
+
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="pwd">Password:</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="password"
+										placeholder="Enter password" name="password">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-default">Submit</button>
+								</div>
+							</div>
+
+							<p>
+								Don't have an account? <span class="forgotPassword"> <a
+									href="/registration"> Sign up here</a></span>
+							</p>
+						</form>
 					</div>
 				</div>
 			</div>
-		</div>
-			</c:when>
-			<c:when test="${Option=='LOGIN-PAGE'}">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-					
-						</div>
-						<div class="col-sm-6 form">
-							<form class="form-horizontal" action="/login-page" method="post">
-								<c:if test="${not empty Error}">
-									<div class="alert alert-danger">
-										<c:out value="${Error}"></c:out>
-									</div>
-					
-								</c:if>
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="email">Email:</label>
-									<div class="col-sm-10">
-										<input type="email" class="form-control" id="email"
-										placeholder="Enter email" name="email">
-									</div>
-								</div>
+		</c:when>
+		
 
-
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="pwd">Password:</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control" id="password"
-											placeholder="Enter password" name="password">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" class="btn  btn-primary">Submit</button>
-									</div>
-								</div>
-
-								<p>
-									Don't have an account? <span class="forgotPassword"> <a
-									href="/registration"> Sign up here</a></span>
-								</p>
-							</form>
-						</div>
-					</div>
-				</div>
-			</c:when>
-			<c:when test="${Option=='REGISTRATION'}">
+		<c:when test="${Option=='REGISTRATION'}">
 			<div class="container">
 				<div class="row">
 					
@@ -160,9 +145,5 @@
 
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-				
-
-	</div>		
 </body>
 </html>
-	
